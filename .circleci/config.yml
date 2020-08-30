@@ -8,7 +8,7 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - run: cat requirements.txt
+      - run: pip install -r requirements.txt
       - run:
           command: python test.py
           name: Test
