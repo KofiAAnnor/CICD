@@ -29,7 +29,7 @@ def addStudent():
         name = student['name']
         gender = student['gender']
         gpa = student['gpa']
-        studentEntry = {"uid" = uid, "name" = name, "gender" = gender, "gpa" = gpa}
+        studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa}
         database[uid] = studentEntry
     return 200
 """
