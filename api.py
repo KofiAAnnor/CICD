@@ -14,6 +14,9 @@ def getAllStudents():
 @app.route("/student/<uid>", methods=['GET'])
 def getStudent(uid):
     student = database.get(uid)
+    print(uid)
+    print(database)
+    print(student)
     if student is None:
         return {}, 404
     else:
