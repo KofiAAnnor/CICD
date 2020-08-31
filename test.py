@@ -10,7 +10,7 @@ class Tests(unittest.TestCase):
     def test_add(self):
         tester = app.test_client(self)
         response = tester.get('/students', content_type='html/text')
-        print(resonce)
+        print(response)
         #self.assertEqual(response.status_code, 200)
 
 #        tester = app.test_client(self)
