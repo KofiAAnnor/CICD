@@ -11,6 +11,8 @@ class Tests(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/students', content_type='html/text')
         print(response)
+        print(response[1])
+        print(response[2])
         #self.assertEqual(response.status_code, 200)
 
 #        tester = app.test_client(self)
