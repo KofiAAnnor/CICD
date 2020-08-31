@@ -40,8 +40,8 @@ class Tests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         print("**************************")
         print(response.json)
-        x = jsonify({1267893 : {"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.5, "year" : "senior"}})
-        print(x)
+        x =  {1267893 : {"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.5, "year" : "senior"}}
+        print( jsonify(x))
         print("**************************")
        
         '''
