@@ -34,19 +34,15 @@ def addStudent():
     else:
         return {}, 400
 
-"""
+
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
     student = database.get(uid)
     if student is None:
-        return 404
+        return {}, 404
     else:
         return database.popitem(uid), 200
 
-@app.route("/update/<uid>", methods=['PUT'])
-def updateStudent(uid):
-    return jsonify(database), 200
-"""
 # Running application
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

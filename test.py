@@ -33,26 +33,32 @@ class Tests(unittest.TestCase):
         self.assertEqual(invalid_1_response.status_code, 400)
         self.assertEqual(invalid_2_response.status_code, 400)
         self.assertEqual(invalid_3_response.status_code, 400)
-    
 
-"""
-    def test_getAllStudents2(self):
-        tester = app.test_client(self)
+        # test getAllStudents 
         response = tester.get('/students', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, {1267893 : {"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
-
-    def test_getStudent2(self):
-        tester = app.test_client(self)
+        self.assertEqual(response.json, {1267893:{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
+        
+        # test getStudent 
         response = tester.get('/student/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json,{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"})
+        self.assertEqual(response.json, {"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"})
+    
+        # test deleteStudent 
+        response = tester.delete('/student/12676786', content_type='html/text')
+        self.assertEqual(response.status_code, 404) 
 
-"""
+        response = tester.delete('/student/1267893', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+    
+        # test getAllStudents empty
+        response = tester.get('/students', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {})
 
-
-#        tester = app.test_client(self)
- #       self.assertEqual(400, 400)
+        # test getStudent empty
+        response = tester.get('/student/1267893', content_type='html/text')
+        self.assertEqual(response.status_code, 404)
 
 if __name__ == "__main__":
     unittest.main()
