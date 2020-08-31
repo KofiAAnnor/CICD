@@ -1,6 +1,7 @@
 from api import app
 import unittest
-from flask import json
+from flask import json, jsonify
+
 import logging
 
 
