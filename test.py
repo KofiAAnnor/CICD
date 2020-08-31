@@ -38,15 +38,10 @@ class Tests(unittest.TestCase):
         # test getAllStudents 
         response = tester.get('/students', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        print("**************************")
         print(response.json)
         x =  {1267893 : {"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.5, "year" : "senior"}}
-        print( jsonify(x))
-        print("**************************")
-       
+        self.assertEqual(response.json, {'1267893':{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
         '''
-        self.assertEqual(response.json, {1267893:{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
-        
         # test getStudent 
         response = tester.get('/student/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 200)
