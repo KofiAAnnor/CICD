@@ -17,7 +17,7 @@ class Tests(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/student/14654368', content_type='html/text')
         self.assertEqual(response.status_code, 404)
-"""
+
     def test_addStudent(self):
         tester = app.test_client(self)
         
@@ -35,7 +35,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(invalid_1_response.status_code, 400)
         self.assertEqual(invalid_2_response.status_code, 400)
         self.assertEqual(invalid_3_response.status_code, 400)
-
+"""
     def test_getAllStudents2(self):
         tester = app.test_client(self)
         response = tester.get('/students', content_type='html/text')
