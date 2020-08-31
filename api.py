@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 database = {}
 genders = ['male', 'female', 'other']
-year = ['freshman', 'sophmore', 'junior', 'senior']
+years = ['freshman', 'sophmore', 'junior', 'senior']
 
 # Serves GET and POST requests for API
 @app.route("/students", methods=['GET'])
@@ -21,17 +21,19 @@ def getStudent(uid):
 
 @app.route("/add", methods=['POST'])
 def addStudent():
-    for student in request.json:
-        if database.get(student['uid']) != None:
-            return 400
-    for student in request.json:
-        uid = student['uid']
-        name = student['name']
-        gender = student['gender']
-        gpa = student['gpa']
-        studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa}
+    student = request.json
+    uid = student['uid']
+    name = student['name']
+    gender = student['gender']
+    gpa = student['gpa']
+    year = student['year']
+    if database.get(uid) is None and gender in genders and year in years:
+        studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa, "year" : year}
         database[uid] = studentEntry
-    return 200
+        return 200
+    else:
+        return 400
+
 """
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
