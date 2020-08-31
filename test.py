@@ -16,7 +16,7 @@ class Tests(unittest.TestCase):
     def test_getStudent(self):
         tester = app.test_client(self)
         response = tester.get('/student/14654368', content_type='html/text')
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 404)
 """
     def test_addStudent(self):
         tester = app.test_client(self)
