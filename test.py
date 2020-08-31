@@ -41,7 +41,8 @@ class Tests(unittest.TestCase):
         print(response.json)
         print( {1267893:{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
         print("**************************")
-       '''
+       
+        '''
         self.assertEqual(response.json, {1267893:{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
         
         # test getStudent 
@@ -64,6 +65,6 @@ class Tests(unittest.TestCase):
         # test getStudent empty
         response = tester.get('/student/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 404)
-'''
+        '''
 if __name__ == "__main__":
     unittest.main()
