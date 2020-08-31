@@ -27,16 +27,9 @@ def addStudent():
     gender = student['gender']
     gpa = student['gpa']
     year = student['year']
-    print(uid)
-    print(name)
-    print(gender)
-    print(gpa)
-    print(year)
     if database.get(uid) is None and gender in genders and year in years:
         studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa, "year" : year}
         database[uid] = studentEntry
-        print(studentEntry)
-        print(database)
         return {}, 200
     else:
         return {}, 400
