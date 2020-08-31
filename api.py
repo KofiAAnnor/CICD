@@ -30,11 +30,10 @@ def addStudent():
     if database.get(uid) is None and gender in genders and year in years:
         studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa, "year" : year}
         database[uid] = studentEntry
-        status_code = Flask.Response(status=200)
-        return status_code
+        return {}, 200
     else:
-        status_code = Flask.Response(status=400)
-        return status_code
+        return {}, 400
+
 """
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
