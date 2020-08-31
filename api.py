@@ -15,9 +15,9 @@ def getAllStudents():
 def getStudent(uid):
     student = database.get(uid)
     if student is None:
-        return 404
+        return {}, 404
     else:
-        return jsonify(student), 200
+        return jsonify(database[uid]), 200
 
 @app.route("/add", methods=['POST'])
 def addStudent():
