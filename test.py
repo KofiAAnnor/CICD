@@ -8,10 +8,9 @@ import logging
 class Tests(unittest.TestCase):
 
     def test_add(self):
-        logging.warning( "test log" )
         tester = app.test_client(self)
         response = tester.get('/students', content_type='html/text')
-        print("hello ther")
+        print(resonce)
         #self.assertEqual(response.status_code, 200)
 
 #        tester = app.test_client(self)
