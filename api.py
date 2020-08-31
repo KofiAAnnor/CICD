@@ -31,10 +31,10 @@ def addStudent():
         studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa, "year" : year}
         database[uid] = studentEntry
         status_code = flask.Response(status=200)
-	    return status_code
+        return status_code
     else:
         status_code = flask.Response(status=400)
-	    return status_code
+        return status_code
 """
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
