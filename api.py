@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 database = {}
 genders = ['male', 'female', 'other']
-year = ['freshman'. 'sophmore', 'junior', 'senior']
+year = ['freshman', 'sophmore', 'junior', 'senior']
 
 # Serves GET and POST requests for API
 @app.route("/students", methods=['GET'])
