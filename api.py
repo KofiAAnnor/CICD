@@ -35,7 +35,6 @@ def addStudent():
     else:
         return {}, 400
 
-
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
     student = database.get(int(uid))

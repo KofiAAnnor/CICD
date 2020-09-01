@@ -7,7 +7,7 @@ import logging
 
 
 class Tests(unittest.TestCase):
-
+    
     def test_addStudent(self):
         tester = app.test_client(self)
         # test getAllStudents empty at first
