@@ -13,7 +13,7 @@ def getAllStudents():
 
 @app.route("/student/<uid>", methods=['GET'])
 def getStudent(uid):
-    student = database.get(uid)
+    student = database.get(int(uid))
     print(type(uid))
     print(database)
     print(student)
