@@ -14,9 +14,6 @@ def getAllStudents():
 @app.route("/student/<uid>", methods=['GET'])
 def getStudent(uid):
     student = database.get(int(uid))
-    print(type(uid))
-    print(database)
-    print(student)
     if student is None:
         return {}, 404
     else:
@@ -41,11 +38,11 @@ def addStudent():
 
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
-    student = database.get(uid)
+    student = database.get(int(uid))
     if student is None:
         return {}, 404
     else:
-        return database.popitem(uid), 200
+        return database.popitem(int(uid)), 200
 
 # Running application
 if __name__ == "__main__":
