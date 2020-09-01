@@ -13,7 +13,7 @@ def getAllStudents():
 
 @app.route("/student/<uid>", methods=['GET'])
 def getStudent(uid):
-    student = database[uid]
+    student = database.get(uid)
     print(uid)
     print(database)
     print(student)
@@ -30,6 +30,14 @@ def addStudent():
     gender = student['gender']
     gpa = student['gpa']
     year = student['year']
+    print("printing types *********")
+    print(type(uid))
+    print(type(name))
+    print(type(gender))
+    print(type(gpa))
+    print(type(year))
+    print("printing types *********")
+
     if database.get(uid) is None and gender in genders and year in years:
         studentEntry = {"uid": uid, "name": name, "gender": gender, "gpa": gpa, "year" : year}
         database[uid] = studentEntry
