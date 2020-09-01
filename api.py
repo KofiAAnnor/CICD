@@ -42,7 +42,7 @@ def deleteStudent(uid):
     if student is None:
         return {}, 404
     else:
-        return database.popitem(int(uid)), 200
+        return database.pop(int(uid)), 200
 
 # Running application
 if __name__ == "__main__":
