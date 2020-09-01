@@ -20,7 +20,7 @@ def getStudent(uid):
     if student is None:
         return {}, 404
     else:
-        return jsonify(database[uid]), 200
+        return jsonify(student), 200
 
 @app.route("/add", methods=['POST'])
 def addStudent():
