@@ -46,10 +46,10 @@ class Tests(unittest.TestCase):
         self.assertEqual(response.json, {"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"})
     
         # test deleteStudent 
-        response = tester.delete('/student/12676786', content_type='html/text')
+        response = tester.delete('/delete/12676786', content_type='html/text')
         self.assertEqual(response.status_code, 404) 
 
-        response = tester.delete('/student/1267893', content_type='html/text')
+        response = tester.delete('/delete/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 200)
     
         # test getAllStudents empty
