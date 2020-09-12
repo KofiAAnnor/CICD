@@ -9,7 +9,7 @@ years = ['freshman', 'sophmore', 'junior', 'senior']
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>Welcome to the student API</h1>", 200
+    return "<h1>Welcome to the student API *updated*</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
