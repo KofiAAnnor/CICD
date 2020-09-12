@@ -29,8 +29,8 @@ jobs:
             touch ~/.aws/config
             chmod 600 ~/.aws/config
             echo "[profile eb-cli]" > ~/.aws/config
-            echo "aws_access_key_id=AKIAVFYWQGWC33JEGB46" >> ~/.aws/config
-            echo "aws_secret_access_key=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" >> ~/.aws/config
+            echo "aws_access_key_id=$aki" >> ~/.aws/config
+            echo "aws_secret_access_key=$sak" >> ~/.aws/config
       - run:
           name: Deploy to EB if branch is Master
           command: |
