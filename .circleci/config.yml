@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
-            eb use CICD-dev --profile eb-cli --region us-east-1
+            eb use CICD --profile eb-cli --region us-east-1
             eb deploy -v --staged --profile eb-cli
 
 workflows:
