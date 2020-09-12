@@ -34,6 +34,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
+            eb init CICD
             eb use CICD-dev --profile eb-cli --region us-west-2
             eb deploy -v --staged --profile eb-cli
 
