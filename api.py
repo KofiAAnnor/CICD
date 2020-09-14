@@ -8,7 +8,7 @@ database = {}
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
-client = boto3.client('secretsmanager')
+client = boto3.client('secretsmanager', region_name='us-west-2')
 response = client.get_secret_value(
     SecretId = 'dbsecrets'
 )
