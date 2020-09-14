@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+import mysql.connector
+import boto3
 
 # Initializing app and database
 app = Flask(__name__)
@@ -6,10 +8,25 @@ database = {}
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
+client = boto3.client('secretsmanager')
+response = client.get_secret_value(
+    SecretId = 'dbsecrets'
+)
+
+secretDict = json.loads(response['SecretString'])
+
+mydb = mysql.connector.connect(
+  host=secretDict['host'],
+  user=secretDict['username'],
+  password=secretDict['password']
+)
+print(mydb)
+
+
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>Welcome to the student API *updated*</h1>", 200
+    return "<h1>Welcome to the student API *database copnnected*</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
