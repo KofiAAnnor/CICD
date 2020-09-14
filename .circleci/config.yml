@@ -4,20 +4,16 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  build-and-test:
-    executor: python/default
-    steps:
-      - checkout
-      - run: pip install -r requirements.txt
-      - run:
-          command: python test.py
-          name: Test
-  deploy:
+  build-test-deploy:
     docker:
       - image: circleci/python:2.7
     working_directory: ~/repo
     steps:
       - checkout
+      - run:
+          name: Install requirements.txt 
+          command: |
+            pip install -r requirements.txt
       - run:
           name: Install awscli
           command: |
@@ -32,6 +28,10 @@ jobs:
             echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
       - run:
+          name: Test code
+          command: |
+            python test.py
+      - run:
           name: Deploy to EB if branch is Master
           command: |
             eb init --region us-west-2 --platform docker CICD
@@ -41,5 +41,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - build-and-test
-      - deploy
+      - build-test-deploy
