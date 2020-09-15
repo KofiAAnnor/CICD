@@ -22,6 +22,8 @@ mydb = mysql.connector.connect(
   database="studentdatabase"
 )
 
+mycursor = mydb.cursor()
+
 def studentExists(uid):
     sql = "SELECT * FROM students WHERE uid = %s"
     val = (uid,)
