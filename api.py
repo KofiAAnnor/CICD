@@ -18,8 +18,8 @@ secretDict = json.loads(response['SecretString'])
 mydb = mysql.connector.connect(
   host=secretDict['host'],
   user=secretDict['username'],
-  password=secretDict['password']
-  data
+  password=secretDict['password'],
+  database="studentdatabase"
 )
 
 def studentExists(uid):
