@@ -8,12 +8,12 @@ import logging
 
 class Tests(unittest.TestCase):
     
-    def test_addStudent(self):
+    def test_dbfunctionality(self):
         tester = app.test_client(self)
         # test getAllStudents empty at first
         response = tester.get('/students', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, {})
+        self.assertEqual(response.json, [])
 
         # test getStudent empty at first
         response = tester.get('/student/14654368', content_type='html/text')
@@ -38,7 +38,7 @@ class Tests(unittest.TestCase):
         # test getAllStudents 
         response = tester.get('/students', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, {'1267893':{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}})
+        self.assertEqual(response.json, [{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}])
         
         # test getStudent 
         response = tester.get('/student/1267893', content_type='html/text')
@@ -55,7 +55,7 @@ class Tests(unittest.TestCase):
         # test getAllStudents empty
         response = tester.get('/students', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, {})
+        self.assertEqual(response.json, [])
 
         # test getStudent empty
         response = tester.get('/student/1267893', content_type='html/text')
