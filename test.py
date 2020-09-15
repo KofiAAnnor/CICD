@@ -60,8 +60,6 @@ class Tests(unittest.TestCase):
         # test getStudent empty
         response = tester.get('/student/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 404)
-        self.assertEqual(5, 404)
-
 
 if __name__ == "__main__":
     unittest.main()
