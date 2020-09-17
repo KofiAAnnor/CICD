@@ -8,11 +8,11 @@ app = Flask(__name__)
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
-client = boto3.client('secretsmanager', region_name='us-east-2')
+'''client = boto3.client('secretsmanager', region_name='us-east-2')
 response = client.get_secret_value(
     SecretId = 'dbsecrets'
 )
-'''
+
 secretDict = json.loads(response['SecretString'])
 
 mydb = mysql.connector.connect(
