@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
-'''
+
 client = boto3.client('secretsmanager', region_name='us-east-2')
 response = client.get_secret_value(
     SecretId = 'dbsecrets'
 )
-
+'''
 secretDict = json.loads(response['SecretString'])
 
 mydb = mysql.connector.connect(
@@ -39,7 +39,7 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>THIS IS A TEST API</h1>", 200
+    return "<h1>THIS IS A TEST API2</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
