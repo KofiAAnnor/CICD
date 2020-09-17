@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
-
+'''
 client = boto3.client('secretsmanager', region_name='us-east-2')
 response = client.get_secret_value(
     SecretId = 'dbsecrets'
@@ -22,9 +22,10 @@ mydb = mysql.connector.connect(
   database="studentdatabase"
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor()'''
 
 def studentExists(uid):
+    '''
     sql = "SELECT * FROM students WHERE uid = %s"
     val = (uid,)
     mycursor.execute(sql, val)
@@ -33,6 +34,7 @@ def studentExists(uid):
         return True
     else:
         return False
+    '''
 
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
@@ -41,6 +43,8 @@ def getHomePage():
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
+    return "<h1>GET STUDENTS</h1>", 200
+    '''
     sql = "SELECT * FROM students"
     mycursor.execute(sql)
 
@@ -51,11 +55,12 @@ def getAllStudents():
     for result in myresult:
         json_data.append(dict(zip(row_headers,result)))
         
-    return jsonify(json_data), 200 
+    return jsonify(json_data), 200 '''
 
 @app.route("/student/<uid>", methods=['GET'])
 def getStudent(uid):
-    if not studentExists(uid):
+    return "<h1>GET STUDENT</h1>", 200
+    '''if not studentExists(uid):
         return {}, 404
 
     sql = "SELECT * FROM students WHERE uid = %s"
@@ -66,11 +71,13 @@ def getStudent(uid):
     json_data =[]
     for result in myresult:
         json_data.append(dict(zip(row_headers,result)))
-    return jsonify(json_data[0]), 200
+    return jsonify(json_data[0]), 200'''
 
 @app.route("/add", methods=['POST'])
 def addStudent():
-    student = request.json
+    return "<h1>ADD STUDENT</h1>", 200
+
+    '''student = request.json
     uid = student['uid']
     name = student['name']
     gender = student['gender']
@@ -83,18 +90,20 @@ def addStudent():
         mydb.commit()
         return jsonify({'success':True}), 200
     else:
-        return {}, 400
+        return {}, 400'''
 
 @app.route("/delete/<uid>", methods=['DELETE'])
 def deleteStudent(uid):
-    if  studentExists(uid):
+    return "<h1>DELETE STUDENT</h1>", 200
+
+    '''if  studentExists(uid):
         sql = "DELETE FROM students WHERE uid = %s"
         val = (uid, )
         mycursor.execute(sql, val)        
         mydb.commit()
         return jsonify({'success':True}), 200
     else:
-        return {} , 404
+        return {} , 404'''
         
 
 # Running application
