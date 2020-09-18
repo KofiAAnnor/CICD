@@ -48,11 +48,11 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>THIS IS A TEST API2 we in der</h1>", 200
+    return "<h1>THIS IS A TEST APItest os vars</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
-    return "<h1>GET STUDENTS</h1>", 200
+    return os.environ['TEST'], 200
     '''
     sql = "SELECT * FROM students"
     mycursor.execute(sql)
