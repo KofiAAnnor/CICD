@@ -22,6 +22,7 @@ response = client.get_secret_value(
 
 secretDict = json.loads(response['SecretString'])
 '''
+
 mydb = mysql.connector.connect(
   host=os.environ['RDS_HOSTNAME'],
   user=os.environ['RDS_USERNAME'],
