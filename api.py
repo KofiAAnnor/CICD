@@ -24,7 +24,7 @@ secretDict = json.loads(response['SecretString'])
 '''
 
 mydb = mysql.connector.connect(
-  host=os.environ['RDS_HOSTNAME'],
+  host='aafvjrnvpu6a7j.cfkxntknxq50.us-west-2.rds.amazonaws.com',
   user=os.environ['RDS_USERNAME'],
   password=os.environ['RDS_PASSWORD'],
   database="studentdatabase"
