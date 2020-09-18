@@ -1,28 +1,35 @@
 from flask import Flask, request, jsonify, json
 import mysql.connector
 import boto3
+import os
 
 # Initializing app and database
 app = Flask(__name__)
 
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
-
-'''client = boto3.client('secretsmanager', region_name='us-east-2')
+'''
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+client = boto3.client('secretsmanager', region_name='us-east-2')
 response = client.get_secret_value(
     SecretId = 'dbsecrets'
 )
 
 secretDict = json.loads(response['SecretString'])
-
+'''
 mydb = mysql.connector.connect(
-  host=secretDict['host'],
-  user=secretDict['username'],
-  password=secretDict['password'],
+  host=os.environ['RDS_HOSTNAME'],
+  user=os.environ['RDS_USERNAME'],
+  password=os.environ['RDS_PASSWORD'],
   database="studentdatabase"
 )
 
-mycursor = mydb.cursor()'''
+mycursor = mydb.cursor()
 
 def studentExists(uid):
     '''
@@ -39,7 +46,7 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>THIS IS A TEST API2</h1>", 200
+    return "<h1>THIS IS A TEST API2 we in der</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
