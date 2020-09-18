@@ -7,7 +7,7 @@ jobs:
   build-test-deploy:
     docker:
       - image: circleci/python:2.7
-    enviornment:
+    environment:
       HOST: $RDS_HOSTNAME
       PASS: $RDS_PASSWORD
       USER: $RDS_USERNAME
