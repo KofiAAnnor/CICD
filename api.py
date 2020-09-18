@@ -22,7 +22,7 @@ response = client.get_secret_value(
 
 secretDict = json.loads(response['SecretString'])
 '''
-
+'''
 mydb = mysql.connector.connect(
   host='aafvjrnvpu6a7j.cfkxntknxq50.us-west-2.rds.amazonaws.com',
   user=os.environ['RDS_USERNAME'],
@@ -32,7 +32,7 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-
+'''
 def studentExists(uid):
     '''
     sql = "SELECT * FROM students WHERE uid = %s"
