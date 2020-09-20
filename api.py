@@ -48,7 +48,9 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>THIS IS A TEST API new env</h1>", 200
+    key = 'HOST'
+    var =  os.getenv[key, "HEY KOFI I COULDNE FIND IT"]
+    return var, 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
