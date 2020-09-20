@@ -49,7 +49,7 @@ def studentExists(uid):
 @app.route("/", methods=['GET'])
 def getHomePage():
     key = 'HOST'
-    var =  os.getenv[key, "HEY KOFI I COULDNE FIND IT"]
+    var =  os.getenv(key, "HEY KOFI I COULDNE FIND IT")
     return var, 200
 
 @app.route("/students", methods=['GET'])
