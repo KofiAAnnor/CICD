@@ -17,6 +17,8 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "What was my custom environment variable?"
+          command: echo ${RDS_HOSTNAME}
           name: Install requirements.txt 
           command: |
             pip install -r requirements.txt
