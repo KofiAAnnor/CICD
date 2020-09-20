@@ -7,11 +7,6 @@ jobs:
   build-test-deploy:
     docker:
       - image: circleci/python:2.7
-    environment:
-      HOST: \$RDS_HOSTNAME
-      PASS: \$RDS_PASSWORD
-      USER: \$RDS_USERNAME
-      DB: \$RDS_DATABASE
 
     working_directory: ~/repo
     steps:
@@ -36,6 +31,10 @@ jobs:
             echo "[profile eb-cli]" > ~/.aws/config
             echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+            HOST = "$RDS_HOSTNAME"
+            PASS = "$RDS_PASSWORD"
+            USER = "$RDS_USERNAME"
+            DB = "$RDS_DATABASE" 
       - run:
           name: Test code
           command: |
