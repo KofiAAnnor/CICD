@@ -10,7 +10,7 @@ genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
 mydb = mysql.connector.connect(
-  host= os.getenv("APIDBHOST"),
+  host= os.getenv("APIDBDB"),
   password= os.getenv("APIDBPASS"),
   user= os.getenv("APIDBUSER"),
   database= os.getenv("APIDBDB")
