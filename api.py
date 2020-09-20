@@ -10,10 +10,10 @@ genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
 mydb = mysql.connector.connect(
-  host= os.getenv("HOST", "HOST"),
-  password= os.getenv("PASS", "PASS"),
-  user= os.getenv("USER", "USER"),
-  database= os.getenv("DB", "DB")
+  host= os.getenv("HOST"),
+  password= os.getenv("PASS"),
+  user= os.getenv("USER"),
+  database= os.getenv("DB")
 )
 
 mycursor = mydb.cursor()
