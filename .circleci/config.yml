@@ -8,10 +8,10 @@ jobs:
     docker:
       - image: circleci/python:2.7
     environment:
-      HOST: $RDS_HOSTNAME
-      PASS: $RDS_PASSWORD
-      USER: $RDS_USERNAME
-      DB: $RDS_DATABASE
+      HOST: \$RDS_HOSTNAME
+      PASS: \$RDS_PASSWORD
+      USER: \$RDS_USERNAME
+      DB: \$RDS_DATABASE
 
     working_directory: ~/repo
     steps:
