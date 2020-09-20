@@ -35,6 +35,8 @@ jobs:
             APIDBPASS="$RDS_PASSWORD"
             APIDBUSER="$RDS_USERNAME"
             APIDBDB="$RDS_DATABASE" 
+            echo $APIDBHOST
+            echo $APIDBDB
       - run:
           name: Test code
           command: |
