@@ -8,31 +8,16 @@ app = Flask(__name__)
 
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
-'''
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
-        }
-client = boto3.client('secretsmanager', region_name='us-east-2')
-response = client.get_secret_value(
-    SecretId = 'dbsecrets'
-)
 
-secretDict = json.loads(response['SecretString'])
-'''
-'''
 mydb = mysql.connector.connect(
-  host='aafvjrnvpu6a7j.cfkxntknxq50.us-west-2.rds.amazonaws.com',
-  user=os.environ['RDS_USERNAME'],
-  password=os.environ['RDS_PASSWORD'],
-  database="studentdatabase",
-  port=3306
+  host= os.getenv("HOST", "HOST"),
+  password= os.getenv("PASS", "PASS"),
+  user= os.getenv("USER", "USER"),
+  database= os.getenv("DB", "DB")
 )
 
 mycursor = mydb.cursor()
-'''
+
 def studentExists(uid):
     '''
     sql = "SELECT * FROM students WHERE uid = %s"
@@ -48,9 +33,7 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    key = 'HOST'
-    var =  os.getenv(key, "HEY KOFI I COULDNE FIND IT")
-    return var, 200
+    return "<h1>WELCOME TO THE STUDENT API *TESTING*</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
