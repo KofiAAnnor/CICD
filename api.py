@@ -32,7 +32,7 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>WELCOME TO THE STUDENT API *TESTING final*</h1>", 200
+    return "<h1>WELCOME TO THE STUDENT API!</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():

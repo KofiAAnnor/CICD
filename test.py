@@ -1,7 +1,6 @@
 from api import app
 import unittest
 from flask import json, jsonify
-
 import logging
 
 
@@ -10,13 +9,7 @@ class Tests(unittest.TestCase):
     
     def test_dbfunctionality(self):
         self.assertEqual(400, 400)
-
-        '''
         tester = app.test_client(self)
-        # test getAllStudents empty at first
-        response = tester.get('/students', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, [])
 
         # test getStudent empty at first
         response = tester.get('/student/14654368', content_type='html/text')
@@ -38,11 +31,6 @@ class Tests(unittest.TestCase):
         self.assertEqual(invalid_2_response.status_code, 400)
         self.assertEqual(invalid_3_response.status_code, 400)
 
-        # test getAllStudents 
-        response = tester.get('/students', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, [{"uid": 1267893, "name": "James Gordon", "gender": "male", "gpa": 3.500, "year" : "senior"}])
-        
         # test getStudent 
         response = tester.get('/student/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 200)
@@ -54,15 +42,10 @@ class Tests(unittest.TestCase):
 
         response = tester.delete('/delete/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-    
-        # test getAllStudents empty
-        response = tester.get('/students', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json, [])
 
         # test getStudent empty
         response = tester.get('/student/1267893', content_type='html/text')
         self.assertEqual(response.status_code, 404)
-    '''
+    
 if __name__ == "__main__":
     unittest.main()
