@@ -12,9 +12,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "What was my custom environment variable?"
-          command: echo ${RDS_HOSTNAME}
-      - run:
           name: Install requirements.txt 
           command: |
             pip install -r requirements.txt
@@ -31,12 +28,6 @@ jobs:
             echo "[profile eb-cli]" > ~/.aws/config
             echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
-            APIDBHOST="$RDS_HOSTNAME"
-            APIDBPASS="$RDS_PASSWORD"
-            APIDBUSER="$RDS_USERNAME"
-            APIDBDB="$RDS_DATABASE" 
-            echo $APIDBHOST
-            echo $APIDBDB
       - run:
           name: Test code
           command: |

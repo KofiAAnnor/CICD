@@ -9,19 +9,15 @@ app = Flask(__name__)
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
-print(os.getenv("APIDBDHOST"))
-print(os.getenv("APIDBDB"))
-print(os.environ)
-'''
 mydb = mysql.connector.connect(
-  host= os.getenv("APIDBDB"),
-  password= os.getenv("APIDBPASS"),
-  user= os.getenv("APIDBUSER"),
-  database= os.getenv("APIDBDB")
+  host= os.environ["RDS_HOSTNAME"],
+  password= os.environ["RDS_PASSWORD"],
+  user= os.environ["RDS_USERNAME"],
+  database= os.environ["RDS_DATABASE"]
 )
 
 mycursor = mydb.cursor()
-'''
+
 def studentExists(uid):
     '''
     sql = "SELECT * FROM students WHERE uid = %s"
@@ -37,7 +33,7 @@ def studentExists(uid):
 # Serves GET and POST requests for API
 @app.route("/", methods=['GET'])
 def getHomePage():
-    return "<h1>WELCOME TO THE STUDENT API *TESTING*</h1>", 200
+    return "<h1>WELCOME TO THE STUDENT API *TESTING final*</h1>", 200
 
 @app.route("/students", methods=['GET'])
 def getAllStudents():
