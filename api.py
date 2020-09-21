@@ -11,6 +11,7 @@ years = ['freshman', 'sophmore', 'junior', 'senior']
 
 print(os.getenv("APIDBDHOST"))
 print(os.getenv("APIDBDB"))
+print(os.environ)
 '''
 mydb = mysql.connector.connect(
   host= os.getenv("APIDBDB"),
