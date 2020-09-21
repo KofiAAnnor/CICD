@@ -9,6 +9,9 @@ app = Flask(__name__)
 genders = ['male', 'female', 'other']
 years = ['freshman', 'sophmore', 'junior', 'senior']
 
+print(os.getenv("APIDBDHOST"))
+print(os.getenv("APIDBDB"))
+'''
 mydb = mysql.connector.connect(
   host= os.getenv("APIDBDB"),
   password= os.getenv("APIDBPASS"),
@@ -17,7 +20,7 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-
+'''
 def studentExists(uid):
     '''
     sql = "SELECT * FROM students WHERE uid = %s"
